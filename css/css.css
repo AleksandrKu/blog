@@ -1,0 +1,53 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.btn-space {
+    margin: 15px;
+    font-size: large;
+}
+
+.red {
+    color: red;
+}
+
+.new-post {
+    margin-left: 100px;
+    color: red
+}
+
+.success {
+    color: green;
+}
+
+.back {
+    background-color: #EEFFEF;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.main {
+    /*height: 120px;*/
+    overflow-y: auto;
+    border: 1px solid #C1C1C1;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.div_container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* border: 1px solid #C1C1C1;*/
+    padding: 5px;
+    border-radius: 5px
+}
+
+.btn-space {
+    margin: 5px;
+    font-size: medium;
+}
