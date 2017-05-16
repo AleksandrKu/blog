@@ -1,9 +1,9 @@
 <?php
 return [
 	'host' => 'localhost',
-	'username' => 'note-_admin',
-	'password' =>  'admin',
-	'database' => 'note-book_blog',
+	'username' => 'root',
+	'password' =>  '',
+	'database' => 'blog',
 	'title' => 'Мой блог',
 	'table_article' => 'articles',
 	'table_comments' => 'comments'

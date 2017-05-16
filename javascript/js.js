@@ -1,7 +1,7 @@
 $(function () {
     function stringlength(field, mnlen, mxlen)
     {
-        if((field.length < mnlen) || (field.length > mxlen))
+      if((field.length < mnlen) || (field.length > mxlen))
         {
             return false;
         }
@@ -17,7 +17,7 @@ $(function () {
         if (stringlength(name_v, 3, 30)) {
             $("#result-name").text("");
         } else {
-            $("#result-name").text("Please input the name between 3 and 30 characters.");
+            $("#result-name").text("Input the name between 3 and 30 characters.");
             $("#result-name").css("color", "red");
         }
     });
@@ -54,9 +54,6 @@ $("#message").on("blur", function () {
     });
 
 
-
-
-
     $('#contactForm').submit(function (event) {
         event.preventDefault();
         var formValid = true;
@@ -78,7 +75,7 @@ $("#message").on("blur", function () {
 
             $.ajax({
                 type: "POST",
-                url: "comment.php",
+                url: "check-comment.php",
                 data: data_for_send,
                 cache: false,
                 success: function (data) {
@@ -88,12 +85,25 @@ $("#message").on("blur", function () {
                         $('#message').val('');
                         // delete class hidden from id=successMessage,
                         $('#successMessage').removeClass('hidden');
+
+                        $.ajax({
+                            type: "POST",
+                            url: "comments.php",
+                            data: "id="+id_article,
+                            success: function (prin) {
+                                console.log(prin);
+                                $("#comments").html(prin);
+                            }
+                        });
+
                     }
                 },
                 error: function (request) {
                     $('#error').text('Error ' + request.responseText + ' when sending data.');
                 }
             });
+
+
 
         }
     });

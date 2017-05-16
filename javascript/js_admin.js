@@ -5,6 +5,7 @@ $("#container").height(+height3);
 
 // delete article
 $('.delete').on('click', function () {
+    if(confirm("Delete article ?")) {
     var delete_id = $(this).attr("id");
     var row_delete = '#row-' + delete_id;
     $(row_delete).css('display', 'none');
@@ -23,5 +24,6 @@ $('.delete').on('click', function () {
             $('#delete-success').text(" Couldn't delete.");
         }
     }
+}
 });
 
