@@ -2,12 +2,9 @@
 require_once "bd.php";
 $pdo_comment = new  PDODriver($config['host'], $config['username'], $config['password'], $config['database']);
 $table = $config['table_comments'];
-//открываем сессию
-/*session_start();*/
-// переменная, в которую будем сохранять результат работы
+
 $data['result']='error';
 
-// функция для проверки длины строки
 function validStringLength($string,$min,$max) {
 	$length = mb_strlen($string,'UTF-8');
 	if (($length<$min) || ($length>$max)) {
@@ -18,21 +15,21 @@ function validStringLength($string,$min,$max) {
 	}
 }
 
-// если данные были отправлены методом POST, то...
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	// устанавливаем результат, равный success
+
 	$data['result']='success';
-	//получить имя, которое ввёл пользователь
+
 	if (isset($_POST['name'])) {
 		$name = $_POST['name'];
 		if (!validStringLength($name,2,30)) {
-			$data['name']='Поля имя содержит недопустимое количество символов.';
+			$data['name']='Error';
 			$data['result']='error';
 		}
 	} else {
 		$data['result']='error';
 	}
-	//получить email, который ввёл пользователь
+	// email
 	if (isset($_POST['email'])) {
 		$email = $_POST['email'];
 		if (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
@@ -42,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$data['result']='error';
 	}
-	//получить сообщение, которое ввёл пользователь
+	//message
 	if (isset($_POST['message'])) {
 		$message = $_POST['message'];
 		if (!validStringLength($message,5,500)) {
-			$data['message']='Поле сообщение содержит недопустимое количество символов.';
+			$data['message']='Error.';
 			$data['result']='error';
 		}
 	} else {
@@ -54,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 } else {
-	//данные не были отправлены методом пост
+	// not method POST
 	$data['result']='error';
 }
-
+date_default_timezone_set('Europe/Kiev');
 if ($data['result']=='success') {
 	$properties = [
 		'articles_id' => (int)($_POST['id_article']),
@@ -68,6 +65,5 @@ if ($data['result']=='success') {
 	];
 	$get_title = $pdo_comment->insert($table, $properties);
 }
-// формируем ответ, который отправим клиенту
+// answer
 echo json_encode($data);
-?>

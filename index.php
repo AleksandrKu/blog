@@ -29,7 +29,6 @@ if (!isset($_GET['id']) || empty($get_id) || $get_id < 1) {
 <div><a class="btn" href="/admin/">Back to articles</a></div>
 <div class="container id_article" id="<?= $id ?>">
     <div class="row">
-        <hr>
         <div class="col-md-1"></div>
         <div class="col-md-10 back">
 			<?php
@@ -38,7 +37,6 @@ if (!isset($_GET['id']) || empty($get_id) || $get_id < 1) {
 			?>
         </div>
     </div>
-    <hr>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10 back">
@@ -56,7 +54,8 @@ if (!isset($_GET['id']) || empty($get_id) || $get_id < 1) {
                                     </div>
                                     <!-- Name user -->
                                     <div class="form-group has-feedback">
-                                        <label for="name">Name <sup class="red">*</sup></label>
+                                        <label for="name">Name <sup class="red">*</sup> <span id="result-name"> </span>
+                                        </label>
                                         <input type="text" id="name" name="name" class="form-control"
                                                required="required" value="" placeholder="example, Ivan"
                                                minlength="3" maxlength="30">
@@ -64,9 +63,11 @@ if (!isset($_GET['id']) || empty($get_id) || $get_id < 1) {
                                     </div>
                                     <!-- Email user  -->
                                     <div class="form-group has-feedback">
-                                        <label for="email" class="control-label">Email <sup class="red">*</sup></label>
+                                        <label for="email" class="control-label">Email <sup class="red">* </sup> <span
+                                                    id="result"> </span> </label>
                                         <input type="email" id="email" name="email" class="form-control"
-                                               required="required" value="" placeholder="example, ivan@mail.ru"
+                                               required="required" value=""
+                                               placeholder="example, ivan@mail.ru , from 3 to 30 characters"
                                                maxlength="30">
                                         <span class="glyphicon form-control-feedback"></span>
                                     </div>
@@ -74,7 +75,8 @@ if (!isset($_GET['id']) || empty($get_id) || $get_id < 1) {
                             </div>
                             <!-- message from user  -->
                             <div class="form-group has-feedback">
-                                <label for="message" class="control-label">Comment <sup class="red">*</sup></label>
+                                <label for="message" class="control-label">Comment <sup class="red">* </sup> <span
+                                            id="result-message"> </span> </label>
                                 <textarea id="message" class="form-control" rows="4"
                                           placeholder="From 5 to 500 characters" minlength="5"
                                           maxlength="500" required="required"></textarea>

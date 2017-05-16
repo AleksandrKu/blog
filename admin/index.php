@@ -26,7 +26,7 @@ require_once "../bd.php";
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <a target="_blank" href="/admin/change.php?id=<?= $max_id ?>" class="btn btn-primary">Add new post</a>
+                <a href="/admin/change.php?id=<?= $max_id ?>" class="btn btn-primary">Add new post</a>
                 <span class="new-post" id="delete-success"></span></div>
             <div class="col-md-1"></div>
         </div>
@@ -50,37 +50,6 @@ require_once "../bd.php";
 		<?php } ?>
     </div>
 </main>
-<script>
-    var height = +window.screen.availHeight;
-    height3 = height - Math.ceil(height * 0.30);
-    console.log(height3);
-    $("#container").height(+height3);
-</script>
-<script>
-    $('.delete').on('click', function () {
-        var delete_id = $(this).attr("id");
-        console.log(delete_id);
-        var row_delete = '#row-' + delete_id;
-        $(row_delete).css('display', 'none');
-
-        var send_post = "delete=delete&id_article=" + delete_id;
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "change_article.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send(send_post);
-
-        xhr.onreadystatechange = function () {
-            if (this.statusText === "OK" && this.status === 200 && this.readyState === 4) {
-                /*  console.log(xhr.response);*/
-                $('#delete-success').text(" Deleted successfully.");
-                // $('#results').html(xhr.response);
-                // document.getElementById('container').innerHTML = "404 no file";
-                return true;
-            } else {
-                // $('#results').html("not find file");
-            }
-        }
-    });
-</script>
+<script src="../javascript/js_admin.js"></script>
 </body>
 </html>
