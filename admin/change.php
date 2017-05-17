@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
             <textarea class="form-control text text-left" rows="1" id="title"
                       title="Title. "><?php  echo ($get_id)?$pdo_get->get_title($id):""; ?></textarea>
             <br>
-            <textarea name="textarea" class="form-control text" rows="25" id="text"
+            <textarea name="textarea" class="form-control text" rows="40" id="text"
                       title="Text"><?php  echo ($get_id)?$pdo_get->get_text($id):""; ?></textarea>
             <div id="id_article" id_articles="<?= $id ?>"></div>
             <div class="btn btn-success pull-right btn-space" id="save"> Save</div>
@@ -47,7 +47,10 @@ if (isset($_GET['id'])) {
 </form>
 <script src="../javascript/js_change.js"></script>
 <script>
-    CKEDITOR.replace("textarea");
+    CKEDITOR.replace("textarea", {
+        customConfig: 'config.js'
+    });
+
 </script>
 
 </body>

@@ -5,7 +5,9 @@ $table = $config['table_article'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_article'])) {
 	 $id = $_POST['id_article'];
 	 $title = $_POST['title'];
-	 $text = $_POST['text'];
+	$text =preg_replace("/&ndash;/", " ", $_POST['text']);
+	/*$text  = htmlentities($text, ENT_QUOTES);*/
+
 	 $delete = $_POST['delete'];
 	if ($delete != 'delete') {
 		$get_id = $pdo_change_article->check_id($table, $id);
